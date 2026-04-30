@@ -14,13 +14,17 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const { count: portCount } = await supabase
+        const { count: portCount, error: portErr } = await supabase
           .from('projects')
           .select('*', { count: 'exact', head: true });
         
-        const { count: carCount } = await supabase
+        console.log('projects count:', portCount, 'error:', portErr);
+        
+        const { count: carCount, error: carErr } = await supabase
           .from('careers')
           .select('*', { count: 'exact', head: true });
+
+        console.log('careers count:', carCount, 'error:', carErr);
 
         const { count: inqCount } = await supabase
           .from('contacts')
