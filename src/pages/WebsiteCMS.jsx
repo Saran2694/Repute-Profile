@@ -78,6 +78,7 @@ const PAGE_TEMPLATES = {
 };
 
 const WebsiteCMS = ({ embeddedSlug = null }) => {
+  console.log("WebsiteCMS LOADED - slug:", embeddedSlug);
   const [viewMode, setViewMode] = useState('visual'); // Default to visual for better UX
   const [activeTab, setActiveTab] = useState(embeddedSlug ? 'sections' : 'pages');
   const [pages, setPages] = useState([]);
@@ -122,6 +123,7 @@ const WebsiteCMS = ({ embeddedSlug = null }) => {
 
   useEffect(() => {
     if (selectedPage) {
+      console.log("FETCH RUNNING for:", selectedPage.slug);
       loadSections(selectedPage.slug);
     }
   }, [selectedPage]);
