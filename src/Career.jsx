@@ -61,7 +61,7 @@ const Career = () => {
   const fetchLiveJobs = async () => {
     try {
       const { data, error } = await supabase
-        .from('careers')
+        .from('job_openings')
         .select('*')
         .order('created_at', { ascending: false });
 

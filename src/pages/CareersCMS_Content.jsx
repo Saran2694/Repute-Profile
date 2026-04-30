@@ -15,7 +15,7 @@ const CareersCMS_Content = () => {
   const fetchCareers = async () => {
     try {
       const { data, error } = await supabase
-        .from('careers')
+        .from('job_openings')
         .select('*')
         .order('created_at', { ascending: false });
       
@@ -31,13 +31,13 @@ const CareersCMS_Content = () => {
     try {
       if (isEditing) {
         const { error } = await supabase
-          .from('careers')
+          .from('job_openings')
           .update(formData)
           .eq('id', editingId);
         if (error) throw error;
       } else {
         const { error } = await supabase
-          .from('careers')
+          .from('job_openings')
           .insert([formData]);
         if (error) throw error;
       }
@@ -54,7 +54,7 @@ const CareersCMS_Content = () => {
   const handleDelete = async (id) => {
     if (window.confirm('Delete this career post?')) {
       try {
-        const { error } = await supabase.from('careers').delete().eq('id', id);
+        const { error } = await supabase.from('job_openings').delete().eq('id', id);
         if (error) throw error;
         fetchCareers();
       } catch (err) {

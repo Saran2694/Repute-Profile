@@ -102,13 +102,13 @@ const Portfolio = () => {
         const filePath = `portfolio/${fileName}`;
 
         const { error: uploadError } = await supabase.storage
-          .from('images')
+          .from('media')
           .upload(filePath, imageFile);
 
         if (uploadError) throw uploadError;
 
         const { data: { publicUrl } } = supabase.storage
-          .from('images')
+          .from('media')
           .getPublicUrl(filePath);
         
         finalImageUrl = publicUrl;

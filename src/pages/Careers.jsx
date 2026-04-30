@@ -16,7 +16,7 @@ const Careers = () => {
   const fetchCareers = async () => {
     try {
       const { data, error } = await supabase
-        .from('careers')
+        .from('job_openings')
         .select('*')
         .order('created_at', { ascending: false });
       
@@ -32,7 +32,7 @@ const Careers = () => {
     try {
       if (isEditing) {
         const { error } = await supabase
-          .from('careers')
+          .from('job_openings')
           .update({
             title: formData.title,
             location: formData.location,
@@ -43,7 +43,7 @@ const Careers = () => {
         if (error) throw error;
       } else {
         const { error } = await supabase
-          .from('careers')
+          .from('job_openings')
           .insert([{
             title: formData.title,
             location: formData.location,
@@ -68,7 +68,7 @@ const Careers = () => {
     if (window.confirm('Are you sure you want to delete this career post?')) {
       try {
         const { error } = await supabase
-          .from('careers')
+          .from('job_openings')
           .delete()
           .eq('id', id);
 
@@ -140,7 +140,7 @@ const Careers = () => {
                   { title: 'Social Media Manager', location: 'Coimbatore', type: 'Full-time' },
                   { title: 'Web Developer', location: 'Remote', type: 'Full-time' }
                 ];
-                await supabase.from('careers').insert(defaults);
+                await supabase.from('job_openings').insert(defaults);
                 fetchCareers();
               }
             }}>Seed Data</button>

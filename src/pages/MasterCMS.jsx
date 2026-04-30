@@ -144,6 +144,7 @@ const MasterCMS = () => {
     try {
       const updates = Object.entries(globalContent).map(([key, value]) => ({
         page: selectedPage,
+        section: 'general',
         field_key: key,
         field_value: value
       }));
@@ -229,13 +230,13 @@ const MasterCMS = () => {
       const filePath = `sections/${fileName}`;
 
       const { error: uploadError } = await supabase.storage
-        .from('images')
+        .from('media')
         .upload(filePath, imgState.file);
 
       if (uploadError) throw uploadError;
 
       const { data: { publicUrl } } = supabase.storage
-        .from('images')
+        .from('media')
         .getPublicUrl(filePath);
       
       return publicUrl;
@@ -535,6 +536,30 @@ const MasterCMS = () => {
       case 'home':
         return (
           <>
+            {/* ── GLOBAL TEXT CONTENT ── */}
+            <div className="cms-template-box" style={{ background: '#1e293b', borderRadius: '12px', padding: '24px', border: '1px solid #334155', marginBottom: '30px' }}>
+              <div className="cms-template-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px', paddingBottom: '15px', borderBottom: '1px solid #334155' }}>
+                <h2 style={{ margin: 0, color: '#f8fafc', fontSize: '1.4rem' }}>Global Home Content</h2>
+                <button className="add-btn" onClick={saveGlobalContent} disabled={isSavingGlobal} style={{ margin: 0 }}>
+                  {isSavingGlobal ? 'Saving...' : 'Save Changes'}
+                </button>
+              </div>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '20px' }}>
+                <div className="form-group">
+                  <label className="form-label">Years of Experience</label>
+                  <input type="text" className="form-input" value={globalContent.stats_years || ''} onChange={(e) => handleGlobalChange('stats_years', e.target.value)} />
+                </div>
+                <div className="form-group">
+                  <label className="form-label">Professionals</label>
+                  <input type="text" className="form-input" value={globalContent.stats_professionals || ''} onChange={(e) => handleGlobalChange('stats_professionals', e.target.value)} />
+                </div>
+                <div className="form-group">
+                  <label className="form-label">Satisfied Clients</label>
+                  <input type="text" className="form-input" value={globalContent.stats_clients || ''} onChange={(e) => handleGlobalChange('stats_clients', e.target.value)} />
+                </div>
+              </div>
+            </div>
+
             {/* ── HERO SLIDER ── */}
             <div className="cms-template-box" style={{ background: '#1e293b', borderRadius: '12px', padding: '24px', border: '1px solid #334155', marginBottom: '30px' }}>
               <div className="cms-template-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px', paddingBottom: '15px', borderBottom: '1px solid #334155' }}>
