@@ -1,0 +1,365 @@
+/* =============================================
+   BRAND CREATIVES PAGE CSS
+   ============================================= */
+
+:root {
+  --primary-navy: #151B2D;
+  --secondary-red: #ff0000;
+  --white: #ffffff;
+  --black: #000000;
+  --text-gray: #e2e8f0;
+  --glass-bg: rgba(255, 255, 255, 0.08);
+  --glass-border: rgba(255, 255, 255, 0.18);
+  --soft-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  --hover-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+.brand-creatives-page {
+  font-family: var(--font-body);
+  background-color: var(--white);
+  color: var(--black);
+  overflow-x: hidden;
+}
+
+.brand-creatives-page h1, .brand-creatives-page h2, .brand-creatives-page h3 {
+  font-family: var(--font-heading);
+}
+
+/* =============================================
+   HERO SECTION
+   ============================================= */
+.creatives-hero {
+  position: relative;
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-image: 
+    linear-gradient(to bottom, rgba(21, 27, 45, 0.92), rgba(21, 27, 45, 0.85)),
+    url('https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=1920&q=80');
+  background-size: cover;
+  background-position: center;
+  color: var(--white);
+  padding: 120px 5%;
+  overflow: hidden;
+}
+
+.creatives-hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 0, 0, 0.15), transparent 60%);
+  pointer-events: none;
+}
+
+.hero-particle {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  animation: floatUp 15s infinite linear;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(100vh) scale(0); opacity: 0; }
+  50% { opacity: 0.5; }
+  100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+}
+
+.creatives-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+}
+
+.creatives-hero h1 {
+  font-size: 4.5rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+  background: linear-gradient(to right, #fff, #ff8a8a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.creatives-hero .subtitle {
+  font-size: 1.5rem;
+  color: var(--secondary-red);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.creatives-hero .description {
+  font-size: 1.25rem;
+  color: var(--text-gray);
+  line-height: 1.6;
+  margin-bottom: 40px;
+}
+
+/* =============================================
+   BUTTONS (LUXURY STYLE)
+   ============================================= */
+.btn-luxury-red {
+  background: linear-gradient(135deg, #ff4d4d, #ff1f1f);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 24px rgba(255, 0, 0, 0.18);
+  color: var(--white);
+  padding: 16px 42px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-family: var(--font-heading);
+  min-width: 200px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.btn-luxury-red:hover {
+  transform: translateY(-3px);
+  background: linear-gradient(135deg, #ff6b6b, #ff3d3d);
+  box-shadow: 0 12px 30px rgba(255, 0, 0, 0.3);
+}
+
+.btn-luxury-glass {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 2px solid var(--glass-border);
+  color: var(--white);
+  padding: 16px 42px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-family: var(--font-heading);
+  min-width: 200px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.btn-luxury-glass:hover {
+  background: var(--white);
+  color: var(--primary-navy);
+  transform: translateY(-3px);
+}
+
+.hero-btn-group {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* =============================================
+   OPPORTUNITIES SECTION (Cards)
+   ============================================= */
+.positions-section {
+  padding: 100px 5%;
+  background-color: #f8fafc;
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(21, 27, 45, 0.05) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(255, 0, 0, 0.05) 0px, transparent 50%);
+}
+
+.section-head {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.section-head h2 {
+  font-size: 2.8rem;
+  color: var(--primary-navy);
+  margin-bottom: 10px;
+}
+
+.section-head p {
+  color: #64748b;
+  font-size: 1.15rem;
+}
+
+.creatives-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 25px;
+  max-width: 1250px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .creatives-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1100px) {
+  .creatives-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.creative-card {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-top: 4px solid rgba(255, 0, 0, 0.5);
+  border-radius: 20px;
+  padding: 35px 25px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.creative-card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--hover-shadow);
+  background: var(--white);
+  border-top-color: var(--secondary-red);
+}
+
+.card-tag {
+  display: inline-block;
+  background: rgba(21, 27, 45, 0.08);
+  color: var(--primary-navy);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  width: fit-content;
+}
+
+.card-title {
+  font-size: 1.45rem;
+  color: var(--primary-navy);
+  font-weight: 700;
+  margin-bottom: 15px;
+  min-height: 3.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.card-text {
+  color: #475569;
+  line-height: 1.7;
+  margin-bottom: 30px;
+  flex-grow: 1;
+  font-size: 0.95rem;
+}
+
+
+/* =============================================
+   TEAM CULTURE SECTION
+   ============================================= */
+.creatives-culture {
+  padding: 120px 5%;
+  background: var(--white);
+}
+
+.culture-flex {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 80px;
+}
+
+@media (max-width: 991px) {
+  .culture-flex {
+    flex-direction: column;
+    text-align: center;
+    gap: 50px;
+  }
+}
+
+.culture-content {
+  flex: 1;
+}
+
+.culture-badge {
+  color: var(--secondary-red);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+  display: block;
+}
+
+.culture-content h2 {
+  font-size: 3rem;
+  color: var(--primary-navy);
+  margin-bottom: 25px;
+  line-height: 1.2;
+}
+
+.culture-content p {
+  font-size: 1.15rem;
+  color: #475569;
+  line-height: 1.7;
+  margin-bottom: 40px;
+}
+
+.culture-visual {
+  flex: 1;
+  position: relative;
+  border-radius: 28px;
+}
+
+.team-image {
+  width: 100%;
+  height: 520px;
+  object-fit: cover;
+  border-radius: 28px;
+  display: block;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.18);
+  transition: all 0.45s ease;
+  z-index: 2;
+  position: relative;
+}
+
+.team-image:hover {
+  transform: scale(1.03);
+}
+
+.culture-blob {
+  position: absolute;
+  top: -30px;
+  right: -30px;
+  width: 100%;
+  height: 100%;
+  background: var(--primary-navy);
+  opacity: 0.05;
+  border-radius: 30px;
+  transform: rotate(3deg);
+  z-index: 1;
+}
+
+
+
+/* =============================================
+   REVEAL ANIMATIONS
+   ============================================= */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}

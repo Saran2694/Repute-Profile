@@ -1,0 +1,369 @@
+/* =============================================
+   WEB DEVELOPMENT PAGE CSS
+   ============================================= */
+
+:root {
+  --primary-navy: #151B2D;
+  --secondary-red: #ff0000;
+  --white: #ffffff;
+  --black: #000000;
+  --text-gray: #e2e8f0;
+  --glass-bg: rgba(255, 255, 255, 0.08);
+  --glass-border: rgba(255, 255, 255, 0.18);
+  --soft-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  --hover-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+.web-dev-page {
+  font-family: var(--font-body);
+  background-color: var(--white);
+  color: var(--black);
+  overflow-x: hidden;
+}
+
+.web-dev-page h1, .web-dev-page h2, .web-dev-page h3 {
+  font-family: var(--font-heading);
+}
+
+/* =============================================
+   HERO SECTION
+   ============================================= */
+.web-hero {
+  position: relative;
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-image: 
+    linear-gradient(to bottom, rgba(21, 27, 45, 0.94), rgba(21, 27, 45, 0.88)),
+    url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1920&q=80');
+  background-size: cover;
+  background-position: center;
+  color: var(--white);
+  padding: 120px 5%;
+  overflow: hidden;
+}
+
+.web-hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: radial-gradient(circle at 30% 30%, rgba(255, 0, 0, 0.12), transparent 50%),
+              radial-gradient(circle at 70% 70%, rgba(255, 255, 255, 0.05), transparent 50%);
+  pointer-events: none;
+}
+
+.hero-dot {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  animation: floatEffect 20s infinite linear;
+}
+
+@keyframes floatEffect {
+  0% { transform: translate(0, 0) scale(1); opacity: 0; }
+  25% { opacity: 0.6; }
+  100% { transform: translate(100px, -100px) scale(1.5); opacity: 0; }
+}
+
+.web-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+}
+
+.web-hero h1 {
+  font-size: 4.5rem;
+  font-weight: 800;
+  margin-bottom: 15px;
+  background: linear-gradient(to right, #ffffff, #ff9999);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.web-hero .subtitle {
+  font-size: 1.5rem;
+  color: var(--secondary-red);
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  display: block;
+}
+
+.web-hero .description {
+  font-size: 1.25rem;
+  color: var(--text-gray);
+  line-height: 1.7;
+  max-width: 800px;
+  margin: 0 auto 45px;
+}
+
+/* =============================================
+   LUXURY BUTTONS
+   ============================================= */
+.btn-web-luxury {
+  background: linear-gradient(135deg, #ff4d4d, #ff1f1f);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 24px rgba(255, 0, 0, 0.18);
+  color: var(--white);
+  padding: 16px 42px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-family: var(--font-heading);
+  min-width: 200px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.btn-web-luxury:hover {
+  transform: translateY(-5px);
+  background: linear-gradient(135deg, #ff7070, #ff3333);
+  box-shadow: 0 15px 35px rgba(255, 0, 0, 0.35);
+}
+
+.btn-web-glass {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 2px solid var(--glass-border);
+  color: var(--white);
+  padding: 16px 42px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-family: var(--font-heading);
+  min-width: 200px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.btn-web-glass:hover {
+  background: var(--white);
+  color: var(--primary-navy);
+  transform: translateY(-5px);
+}
+
+.btn-group {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* =============================================
+   POSITIONS SECTION (Grid)
+   ============================================= */
+.web-positions {
+  padding: 100px 5%;
+  background-color: #fcfdfe;
+  background-image: 
+    radial-gradient(at 10% 10%, rgba(21, 27, 45, 0.04) 0px, transparent 40%),
+    radial-gradient(at 90% 90%, rgba(255, 0, 0, 0.04) 0px, transparent 40%);
+}
+
+.web-section-head {
+  text-align: center;
+  margin-bottom: 70px;
+}
+
+.web-section-head h2 {
+  font-size: 3rem;
+  color: var(--primary-navy);
+  margin-bottom: 12px;
+}
+
+.web-section-head p {
+  color: #576577;
+  font-size: 1.15rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.web-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 25px;
+  max-width: 1350px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .web-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1100px) {
+  .web-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.job-glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-top: 4px solid rgba(255, 0, 0, 0.6);
+  border-radius: 20px;
+  padding: 35px 25px;
+  box-shadow: 0 10px 40px rgba(31, 38, 135, 0.06);
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.job-glass-card:hover {
+  transform: translateY(-12px);
+  background: var(--white);
+  border-top-color: var(--secondary-red);
+  box-shadow: 0 20px 50px rgba(21, 27, 45, 0.12);
+}
+
+.job-glass-card .tag {
+  display: inline-block;
+  background: rgba(21, 27, 45, 0.08);
+  color: var(--primary-navy);
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 25px;
+  width: fit-content;
+}
+
+.job-glass-card h3 {
+  font-size: 1.4rem;
+  color: var(--primary-navy);
+  font-weight: 800;
+  margin-bottom: 20px;
+  min-height: 3.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.job-glass-card p {
+  color: #576577;
+  line-height: 1.7;
+  margin-bottom: 30px;
+  flex-grow: 1;
+  font-size: 0.95rem;
+}
+
+
+/* =============================================
+   TEAM CULTURE (Split)
+   ============================================= */
+.web-culture {
+  padding: 120px 5%;
+  background: var(--white);
+}
+
+.web-culture-inner {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 80px;
+}
+
+@media (max-width: 1024px) {
+  .web-culture-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+.web-culture-text {
+  flex: 1;
+}
+
+.web-culture-badge {
+  color: var(--secondary-red);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 18px;
+  display: block;
+}
+
+.web-culture-text h2 {
+  font-size: 3.2rem;
+  color: var(--primary-navy);
+  margin-bottom: 28px;
+  line-height: 1.15;
+}
+
+.web-culture-text p {
+  font-size: 1.15rem;
+  color: #576577;
+  line-height: 1.8;
+  margin-bottom: 45px;
+}
+
+.web-culture-visual {
+  flex: 1;
+  position: relative;
+  border-radius: 28px;
+}
+
+.team-image {
+  width: 100%;
+  height: 520px;
+  object-fit: cover;
+  border-radius: 28px;
+  display: block;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.18);
+  transition: all 0.45s ease;
+  z-index: 2;
+  position: relative;
+}
+
+.team-image:hover {
+  transform: scale(1.03);
+}
+
+.abs-curve {
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 100%;
+  height: 100%;
+  background: var(--primary-navy);
+  opacity: 0.05;
+  border-radius: 35px;
+  transform: rotate(4deg);
+  z-index: 1;
+}
+
+
+
+/* =============================================
+   ANIMATIONS
+   ============================================= */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1s ease-out;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}

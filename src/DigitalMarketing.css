@@ -1,0 +1,376 @@
+/* =============================================
+   DIGITAL MARKETING PAGE CSS
+   ============================================= */
+
+:root {
+  --primary-navy: #151B2D;
+  --secondary-red: #ff0000;
+  --white: #ffffff;
+  --black: #000000;
+  --text-gray: #e2e8f0;
+  --glass-bg: rgba(255, 255, 255, 0.08);
+  --glass-border: rgba(255, 255, 255, 0.18);
+  --soft-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  --hover-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+.digital-marketing-page {
+  font-family: var(--font-body);
+  background-color: var(--white);
+  color: var(--black);
+  overflow-x: hidden;
+}
+
+.digital-marketing-page h1, .digital-marketing-page h2, .digital-marketing-page h3 {
+  font-family: var(--font-heading);
+}
+
+/* =============================================
+   HERO SECTION
+   ============================================= */
+.dm-hero {
+  position: relative;
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-image: 
+    linear-gradient(rgba(21, 27, 45, 0.72), rgba(255, 0, 0, 0.45)),
+    url('https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1920&q=80');
+  background-size: cover;
+  background-position: center;
+  color: var(--white);
+  padding: 120px 5%;
+  overflow: hidden;
+}
+
+.dm-hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 0, 0, 0.18), transparent 60%);
+  pointer-events: none;
+}
+
+.dm-particle {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  animation: dmFloat 18s infinite linear;
+}
+
+@keyframes dmFloat {
+  0% { transform: translateY(110vh) scale(0); opacity: 0; }
+  30% { opacity: 0.6; }
+  100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
+}
+
+.dm-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 950px;
+}
+
+.dm-hero h1 {
+  font-size: 4.8rem;
+  font-weight: 800;
+  margin-bottom: 20px;
+  background: linear-gradient(to right, #ffffff, #ff7e7e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1.1;
+}
+
+.dm-hero .dm-sub {
+  font-size: 1.5rem;
+  color: var(--secondary-red);
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-weight: 700;
+  margin-bottom: 30px;
+  display: block;
+}
+
+.dm-hero .dm-desc {
+  font-size: 1.3rem;
+  color: var(--text-gray);
+  line-height: 1.8;
+  margin-bottom: 50px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* =============================================
+   LUXURY BUTTONS
+   ============================================= */
+.btn-dm-luxury {
+  background: linear-gradient(135deg, #ff4c4c, #ff1a1a);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 2px solid rgba(255, 255, 255, 0.22);
+  box-shadow: 0 8px 25px rgba(255, 0, 0, 0.2);
+  color: var(--white);
+  padding: 16px 42px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-family: var(--font-heading);
+  min-width: 200px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.btn-dm-luxury:hover {
+  transform: translateY(-5px);
+  background: linear-gradient(135deg, #ff6666, #ff0000);
+  box-shadow: 0 15px 40px rgba(255, 0, 0, 0.38);
+}
+
+.btn-dm-glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 2px solid var(--glass-border);
+  color: var(--white);
+  padding: 16px 42px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-family: var(--font-heading);
+  min-width: 200px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-dm-glass:hover {
+  background: var(--white);
+  color: var(--primary-navy);
+  transform: translateY(-5px);
+}
+
+.dm-btn-group {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+
+/* =============================================
+   GRID & CARDS
+   ============================================= */
+.dm-positions {
+  padding: 100px 5%;
+  background-color: #fbfcfe;
+  background-image: 
+    radial-gradient(circle at 5% 5%, rgba(21, 27, 45, 0.05) 0%, transparent 35%),
+    radial-gradient(circle at 95% 95%, rgba(255, 0, 0, 0.05) 0%, transparent 35%);
+}
+
+.dm-section-head {
+  text-align: center;
+  margin-bottom: 75px;
+}
+
+.dm-section-head h2 {
+  font-size: 3.4rem;
+  color: var(--primary-navy);
+  margin-bottom: 15px;
+}
+
+.dm-section-head p {
+  color: #64748b;
+  font-size: 1.25rem;
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+.dm-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  justify-content: center;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.dm-glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-top: 4px solid rgba(255, 0, 0, 0.6);
+  border-radius: 20px;
+  padding: 35px 25px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.06);
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  min-height: 480px;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .dm-glass-card {
+    width: calc(50% - 25px);
+  }
+}
+
+@media (min-width: 1100px) {
+  .dm-glass-card {
+    width: calc(33.33% - 25px);
+  }
+}
+
+.dm-glass-card:hover {
+  transform: translateY(-12px);
+  background: #fff;
+  border-top-color: var(--secondary-red);
+  box-shadow: var(--hover-shadow);
+}
+
+.dm-card-tag {
+  display: inline-block;
+  background: rgba(21, 27, 45, 0.1);
+  color: var(--primary-navy);
+  padding: 7px 18px;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 25px;
+  width: fit-content;
+}
+
+.dm-glass-card h3 {
+  font-size: 1.45rem;
+  color: var(--primary-navy);
+  font-weight: 800;
+  margin-bottom: 18px;
+  min-height: 3.5rem;
+  display: flex;
+  align-items: center;
+  line-height: 1.2;
+}
+
+.dm-glass-card p {
+  color: #475569;
+  line-height: 1.75;
+  margin-bottom: 40px;
+  flex-grow: 1;
+  font-size: 0.95rem;
+}
+
+
+/* =============================================
+   TEAM CULTURE
+   ============================================= */
+.dm-culture {
+  padding: 140px 5%;
+  background: #fff;
+}
+
+.dm-culture-flex {
+  max-width: 1250px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 90px;
+}
+
+@media (max-width: 1024px) {
+  .dm-culture-flex {
+    flex-direction: column;
+    text-align: center;
+    gap: 60px;
+  }
+}
+
+.dm-culture-text {
+  flex: 1;
+}
+
+.dm-culture-badge {
+  color: var(--secondary-red);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  margin-bottom: 22px;
+  display: block;
+}
+
+.dm-culture-text h2 {
+  font-size: 3.5rem;
+  color: var(--primary-navy);
+  margin-bottom: 30px;
+  line-height: 1.15;
+}
+
+.dm-culture-text p {
+  font-size: 1.25rem;
+  color: #475569;
+  line-height: 1.85;
+  margin-bottom: 50px;
+}
+
+.dm-culture-visual {
+  flex: 1;
+  position: relative;
+  border-radius: 28px;
+}
+
+.team-image {
+  width: 100%;
+  height: 520px;
+  object-fit: cover;
+  border-radius: 28px;
+  display: block;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.18);
+  transition: all 0.45s ease;
+  z-index: 2;
+  position: relative;
+}
+
+.team-image:hover {
+  transform: scale(1.03);
+}
+
+.dm-blob {
+  position: absolute;
+  top: -35px;
+  right: -35px;
+  width: 100%;
+  height: 100%;
+  background: var(--primary-navy);
+  opacity: 0.05;
+  border-radius: 35px;
+  transform: rotate(4deg);
+  z-index: 1;
+}
+
+
+
+/* =============================================
+   REVEAL
+   ============================================= */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}

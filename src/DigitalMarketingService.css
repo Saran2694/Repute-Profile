@@ -1,0 +1,348 @@
+.dm-banner-hero {
+  background-color: #E10600;
+  padding: 140px 0 80px;
+  position: relative;
+  color: #fff;
+}
+
+.hero-split-layout {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.dm-banner-hero .main-heading {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.4;
+  margin-bottom: 60px;
+  text-align: center;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+  color: #fff;
+}
+
+.hero-text-side .sub-heading {
+  font-size: 3.5rem;
+  font-weight: 900;
+  margin-bottom: 25px;
+  line-height: 1.1;
+  color: #fff;
+}
+
+.yellow-highlight {
+  background: linear-gradient(120deg, rgba(255, 214, 0, 0.9) 0%, rgba(255, 214, 0, 0.9) 100%);
+  background-repeat: no-repeat;
+  background-size: 100% 0.3em;
+  background-position: 0 88%;
+  color: #0f172a;
+  padding: 0 5px;
+}
+
+.hero-description p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 15px;
+  opacity: 0.9;
+}
+
+/* ── MINI FORM ── */
+.form-card-mini {
+  background: white;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+  color: #0f172a;
+}
+
+.mini-inquiry-form .form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.mini-inquiry-form input {
+  padding: 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.checkbox-section-mini p {
+  font-weight: 700;
+  font-size: 0.85rem;
+  margin-bottom: 10px;
+}
+
+.mini-checkbox-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.checkbox-item-mini {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+  color: #475569;
+  cursor: pointer;
+}
+
+.form-footer-mini textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.captcha-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.captcha-group label { font-size: 0.8rem; font-weight: 700; }
+.captcha-group input { width: 100px; padding: 8px; }
+
+.dm-submit-btn-mini {
+  width: 100%;
+  background: #E10600;
+  color: white;
+  border: none;
+  padding: 15px;
+  border-radius: 8px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+/* ── SECTIONS (LIGHT THEME) ── */
+.dm-intro-section { padding: 60px 0; background: #f8fafc; }
+.intro-full p { font-size: 1.2rem; line-height: 1.8; color: #475569; text-align: center; }
+
+.dm-offerings-section, .dm-result-driven, .dm-investment-section { 
+  padding: 80px 0; 
+  background-color: #fff; 
+  color: #0f172a; 
+}
+
+.offer-flex, .result-flex, .investment-flex { 
+  display: grid; 
+  grid-template-columns: 1.1fr 0.9fr; 
+  gap: 80px; 
+  align-items: center; 
+}
+
+.offer-visual, .result-visual, .investment-visual {
+  display: flex;
+  justify-content: center;
+}
+
+.offer-visual img, .result-visual img, .investment-visual img { 
+  width: 100%; 
+  max-width: 480px;
+  border-radius: 20px; 
+  box-shadow: 0 20px 40px rgba(0,0,0,0.05); 
+}
+
+.offer-text h2, .result-text h2, .investment-text h2 { 
+  font-size: 2.8rem; 
+  margin-bottom: 20px; 
+  font-weight: 800; 
+  color: #0f172a; 
+}
+
+.offer-text p, .result-text p, .investment-text p { 
+  font-size: 1.1rem; 
+  line-height: 1.7; 
+  color: #475569; 
+}
+
+.red-contact-btn {
+  background: #E10600;
+  color: white;
+  padding: 15px 40px;
+  border-radius: 8px;
+  font-weight: 800;
+  text-decoration: none;
+  display: inline-block;
+  transition: 0.3s;
+}
+
+.dm-benefits-section { background: #f8fafc; color: #0f172a; padding: 80px 0; }
+.benefits-header { text-align: center; margin-bottom: 60px; }
+.benefit-desc { font-size: 0.85rem; color: #64748b; margin-top: 10px; }
+
+/* ── CLEAN 3-COLUMN SERVICES GRID ── */
+.dm-services-grid-section {
+  padding: 100px 0;
+  background-color: #fff;
+}
+
+.grid-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.grid-header h2 {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.dm-detailed-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+}
+
+.dm-service-card {
+  padding: 40px;
+  border-radius: 20px;
+  background: #fff;
+  border: 1px solid #f1f5f9;
+  transition: all 0.3s;
+  text-align: left;
+}
+
+.dm-service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+  border-color: #E10600;
+}
+
+.card-icon {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 25px;
+}
+
+.card-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.dm-service-card h3 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 15px;
+  color: #E10600; /* Branded Red */
+}
+
+.dm-service-card p {
+  color: #64748b;
+  line-height: 1.7;
+  font-size: 1rem;
+}
+
+/* ── CASE STUDIES (DARK SECTION) ── */
+.dm-case-studies {
+  padding: 80px 0;
+  background-color: #0d121f;
+  text-align: center;
+}
+
+.case-header h2 {
+  font-size: 3rem;
+  font-weight: 900;
+  color: #fff;
+  margin-bottom: 50px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.case-logos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+}
+
+.case-logo-card {
+  background: white;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  height: 180px;
+}
+
+.case-logo-card img {
+  max-width: 100%;
+  height: auto;
+  max-height: 80px;
+  object-fit: contain;
+}
+
+.card-line-accent {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: #E10600;
+  transform: scaleX(0);
+  transition: 0.3s;
+}
+
+.case-logo-card:hover .card-line-accent { transform: scaleX(1); }
+
+/* ── FAQ (DARK THEME) ── */
+.dm-faq-section { 
+  padding: 100px 0; 
+  background-color: #0d121f;
+  text-align: center;
+}
+
+.faq-header h2 {
+  font-size: 3rem;
+  font-weight: 900;
+  color: #fff;
+  margin-bottom: 60px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.faq-list { 
+  max-width: 900px; 
+  margin: 0 auto; 
+  text-align: left;
+}
+
+.faq-item { 
+  margin-bottom: 15px; 
+  border: 1px solid rgba(255,255,255,0.1); 
+  border-radius: 10px; 
+  color: #fff;
+  background: rgba(255,255,255,0.03);
+}
+
+.faq-item summary { 
+  padding: 22px; 
+  cursor: pointer; 
+  font-weight: 700; 
+  list-style: none;
+  font-size: 1.1rem;
+}
+
+.faq-answer { 
+  padding: 0 22px 22px; 
+  color: rgba(255,255,255,0.7); 
+  line-height: 1.8; 
+}
+
+@media (max-width: 1024px) {
+  .hero-split-layout, .offer-flex, .result-flex, .investment-flex { grid-template-columns: 1fr; }
+  .dm-banner-hero { padding: 100px 0 60px; }
+}

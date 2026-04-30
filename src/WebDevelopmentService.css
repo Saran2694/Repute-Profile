@@ -1,0 +1,308 @@
+.web-service {
+  background: #fff;
+  color: #333;
+}
+
+/* ── RED BANNER HERO (Same as Brand) ── */
+.brand-banner-hero {
+  background: #E10600 url("https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=1500") no-repeat center center;
+  background-size: cover;
+  background-blend-mode: multiply;
+  padding: 180px 0 120px;
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+}
+
+.banner-content {
+  position: relative;
+  z-index: 10;
+}
+
+.service-badge {
+  display: inline-block;
+  background: rgba(255,255,255,0.2);
+  padding: 6px 14px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  backdrop-filter: blur(5px);
+}
+
+.brand-banner-hero h1 {
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
+  font-weight: 900;
+  margin-bottom: 30px;
+  line-height: 1.1;
+  max-width: 900px;
+}
+
+.contact-pill-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #151B2D;
+  color: #fff;
+  padding: 14px 28px;
+  border-radius: 50px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.contact-pill-btn:hover {
+  background: #000;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.hero-wave {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  line-height: 0;
+}
+
+.hero-wave svg {
+  width: 100%;
+  height: 120px;
+}
+
+/* ── SPLIT INFO LAYOUT ── */
+.service-info-section {
+  padding: 100px 0;
+}
+
+.light-bg {
+  background: #f8f9fa;
+}
+
+.split-info {
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto 60px;
+}
+
+.info-text p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #555;
+  font-weight: 500;
+}
+
+.split-grid-v2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.split-grid-v2.reverse {
+  direction: rtl;
+}
+
+.split-grid-v2.reverse .text-side {
+  direction: ltr;
+}
+
+.visual-side .rounded-img {
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.1);
+}
+
+.text-side h2 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #151B2D;
+  margin-bottom: 25px;
+}
+
+.text-side p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.highlight {
+  font-weight: 700;
+  color: #E10600 !important;
+  border-left: 4px solid #E10600;
+  padding-left: 20px;
+  margin-top: 30px;
+}
+
+/* ── GRIDS ── */
+.primary-services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  margin-top: 60px;
+  text-align: center;
+}
+
+.detailed-services-section {
+  padding: 100px 0;
+}
+
+.mini-tag {
+  display: inline-block;
+  background: #eee;
+  padding: 4px 12px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  border-radius: 4px;
+}
+
+.detailed-services-section .section-header h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.clean-services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 60px 40px;
+  margin-top: 80px;
+  text-align: center;
+}
+
+.clean-service-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.service-icon-box {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.service-icon-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.clean-service-item h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #151B2D;
+}
+
+.item-subtitle {
+  font-size: 0.85rem;
+  color: #888;
+  margin-top: -10px;
+}
+
+/* ── ACTION SECTION (Same as Brand) ── */
+.split-action-section {
+  padding: 100px 0;
+  background: #f9f9f9;
+}
+
+.split-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 60px;
+}
+
+.form-header h2 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.subheading {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #444;
+  margin-bottom: 24px;
+}
+
+.minimal-contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.minimal-contact-form input,
+.minimal-contact-form textarea {
+  padding: 14px 18px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: #fff;
+}
+
+.form-submit-btn {
+  background: #E10600;
+  color: #fff;
+  padding: 16px 40px;
+  border-radius: 50px;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: all 0.3s ease;
+}
+
+/* ── TESTIMONIAL ── */
+.testimonial-red-card {
+  background: #E10600;
+  border-radius: 8px;
+  color: #fff;
+  padding: 80px 40px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.placeholder-avatar {
+  width: 140px;
+  height: 140px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 30px;
+}
+
+.placeholder-avatar svg {
+  width: 80px;
+  height: 80px;
+  color: rgba(255,255,255,0.6);
+}
+
+.rating-stars {
+  color: #FFD700;
+  margin: 20px 0;
+}
+
+@media (max-width: 992px) {
+  .split-grid-v2, .split-grid, .clean-services-grid, .primary-services-grid {
+    grid-template-columns: 1fr;
+  }
+}
