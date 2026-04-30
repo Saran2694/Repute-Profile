@@ -76,6 +76,33 @@ The Admin Panel (`/adminpage`) is a secure gateway to the **Master CMS**, allowi
 
 ---
 
+## 🔼 Vercel Deployment
+
+To deploy this project to Vercel:
+
+### 1. Environment Variables
+Add the same environment variables from your `.env` file in the **Vercel Dashboard**:
+*   Go to **Project Settings > Environment Variables**.
+*   Ensure all `REACT_APP_` variables are added.
+
+### 2. Client-Side Routing
+We have included a `vercel.json` file to handle routing:
+```json
+{
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}
+```
+
+### 3. Build Settings
+Vercel will automatically detect the **Create React App** settings:
+*   **Framework Preset:** Create React App
+*   **Build Command:** `npm run build`
+*   **Output Directory:** `build`
+
+---
+
 ## 🚀 Netlify Deployment & Live Updates
 
 To deploy this project to Netlify while ensuring the **Admin CMS** and **Dynamic Updates** work correctly, follow these steps:
