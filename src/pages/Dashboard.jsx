@@ -48,6 +48,18 @@ const Dashboard = () => {
     fetchStats();
   }, []);
 
+  // --- TEMPORARY DIAGNOSTIC TEST ---
+  useEffect(() => {
+    const testConnection = async () => {
+      const { data, error } = await supabase.from('projects').select('*');
+      console.log("--- SUPABASE CONNECTION TEST ---");
+      console.log("PROJECT DATA:", data);
+      console.log("ERROR:", error);
+      console.log("URL:", process.env.REACT_APP_SUPABASE_URL);
+    };
+    testConnection();
+  }, []);
+
   return (
     <>
       <style>{`
