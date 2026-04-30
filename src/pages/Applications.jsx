@@ -10,6 +10,21 @@ const Applications = () => {
     fetchApplications();
   }, []);
 
+  // --- TEMPORARY DIAGNOSTIC TEST ---
+  useEffect(() => {
+    const fetchApps = async () => {
+      const { data, error } = await supabase
+        .from('applications')
+        .select('*');
+
+      console.log("--- APPLICATIONS TEST ---");
+      console.log("DATA:", data);
+      console.log("ERROR:", error);
+    };
+
+    fetchApps();
+  }, []);
+
   const fetchApplications = async () => {
     try {
       const { data, error } = await supabase
@@ -100,17 +115,17 @@ const Applications = () => {
                 apps.map((a) => (
                   <tr key={a.id}>
                     <td>{new Date(a.created_at).toLocaleDateString()}</td>
-                    <td style={{ fontWeight: 700 }}>{a.first_name} {a.last_name}</td>
+                    <td style={{ fontWeight: 700 }}>{a.name}</td>
                     <td>
                       <div style={{ fontSize: '0.85rem', fontWeight: 600 }}>{a.email}</div>
-                      <div style={{ fontSize: '0.85rem', color: '#64748b' }}>{a.mobile}</div>
+                      <div style={{ fontSize: '0.85rem', color: '#64748b' }}>{a.phone}</div>
                     </td>
                     <td>
-                      <div style={{ fontWeight: 700, color: '#e10600' }}>{a.selected_job}</div>
+                      <div style={{ fontWeight: 700, color: '#e10600' }}>Portfolio: {a.portfolio_url || 'N/A'}</div>
                       <div style={{ fontSize: '0.75rem', color: '#64748b', marginTop: '4px' }}>
-                        <strong>Service:</strong> {a.service_type || 'N/A'}<br/>
-                        <strong>Source:</strong> {a.source || 'N/A'}<br/>
-                        <strong>Previously Worked:</strong> {a.worked_before || 'No'}
+                        {a.cover_letter ? (
+                          <div style={{ fontStyle: 'italic' }}>"{a.cover_letter.substring(0, 50)}..."</div>
+                        ) : 'No cover letter'}
                       </div>
                     </td>
                     <td>

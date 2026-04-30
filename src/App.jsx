@@ -35,7 +35,6 @@ import TestimonialsCMS from './pages/TestimonialsCMS';
 import BlogCMS from './pages/BlogCMS';
 import SeoCMS from './pages/SeoCMS';
 import ContactCMS from './pages/ContactCMS';
-import MasterCMS from './pages/MasterCMS';
 
 /* =============================================
    HOME PAGE
@@ -219,26 +218,28 @@ function HomePage() {
       try {
         // Fetch Slides
         const { data: slidesData } = await supabase
-          .from('page_sections')
+          .from('site_sections')
           .select('*')
           .eq('page_slug', 'home')
-          .order('created_at', { ascending: true });
+          .eq('section_type', 'hero')
+          .order('sort_order', { ascending: true });
         
         if (slidesData) {
           setDynamicSlides(slidesData.map(sec => ({
-            image: sec.image_url || img2,
-            heading: sec.title,
-            subtext: sec.content,
-            button: sec.button_text || 'Learn More'
+            image: sec.content?.image_url || img2,
+            heading: sec.content?.heading || sec.section_name,
+            subtext: sec.content?.subtext || '',
+            button: sec.content?.button_text || 'Learn More'
           })));
         }
 
         // Fetch Work & Services
         const { data: workData } = await supabase
-          .from('page_sections')
+          .from('site_sections')
           .select('*')
-          .eq('page_slug', 'home_work_services')
-          .order('created_at', { ascending: true });
+          .eq('page_slug', 'home')
+          .eq('section_type', 'services')
+          .order('sort_order', { ascending: true });
         
         if (workData) {
           setDynamicWorkServices(workData);
@@ -649,7 +650,7 @@ export default function App() {
       } />
       <Route path="/dashboard/master-cms" element={
         <ProtectedRoute>
-          <MasterCMS />
+          <WebsiteCMS />
         </ProtectedRoute>
       } />
     </Routes>
