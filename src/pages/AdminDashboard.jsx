@@ -98,7 +98,7 @@ const AdminDashboard = () => {
   const fetchCareers = async () => {
     try {
       const { data, error } = await supabase
-        .from('careers')
+        .from('job_openings')
         .select('*')
         .order('id', { ascending: false });
       
@@ -160,7 +160,7 @@ const AdminDashboard = () => {
     if(window.confirm('Are you sure you want to delete this career?')) {
       try {
         const { error } = await supabase
-          .from('careers')
+          .from('job_openings')
           .delete()
           .eq('id', id);
         
@@ -242,7 +242,7 @@ const AdminDashboard = () => {
     try {
       if (editMode) {
         const { error } = await supabase
-          .from('careers')
+          .from('job_openings')
           .update(currentCareer)
           .eq('id', currentCareer.id);
         if (error) throw error;
@@ -250,7 +250,7 @@ const AdminDashboard = () => {
         // Remove ID if present for new record
         const { id, ...newCareer } = currentCareer;
         const { error } = await supabase
-          .from('careers')
+          .from('job_openings')
           .insert([newCareer]);
         if (error) throw error;
       }

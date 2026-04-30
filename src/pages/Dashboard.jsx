@@ -21,7 +21,7 @@ const Dashboard = () => {
         console.log('projects count:', portCount, 'error:', portErr);
         
         const { count: carCount, error: carErr } = await supabase
-          .from('careers')
+          .from('job_openings')
           .select('*', { count: 'exact', head: true });
 
         console.log('careers count:', carCount, 'error:', carErr);
