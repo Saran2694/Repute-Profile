@@ -41,6 +41,48 @@ const Applications = () => {
     }
   };
 
+  const handleExport = () => {
+    if (apps.length === 0) {
+      alert("No data to export");
+      return;
+    }
+
+    const headers = ["Date", "Candidate Name", "Email", "Mobile", "Job Role", "Service Type", "Source", "Resume URL"];
+    const csvRows = [
+      headers.join(","),
+      ...apps.map(a => {
+        let dateStr = 'N/A';
+        if (a.created_at) {
+          const d = new Date(a.created_at);
+          const day = String(d.getDate()).padStart(2, '0');
+          const month = String(d.getMonth() + 1).padStart(2, '0');
+          const year = d.getFullYear();
+          dateStr = `${day}-${month}-${year}`;
+        }
+        return [
+          `"${dateStr}"`,
+          `"${a.first_name || ''} ${a.last_name || ''}"`.trim(),
+          `"${a.email || ''}"`,
+          `"${a.mobile || ''}"`,
+          `"${a.selected_job || ''}"`,
+          `"${a.service_type || ''}"`,
+          `"${a.source || ''}"`,
+          `"${a.resume_url || ''}"`
+        ].join(",");
+      })
+    ];
+
+    const csvContent = csvRows.join("\n");
+    const blob = new Blob(["\ufeff", csvContent], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.setAttribute("href", url);
+    link.setAttribute("download", `applications_${new Date().toISOString().split('T')[0]}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this application?')) {
       try {
@@ -82,16 +124,38 @@ const Applications = () => {
         .delete-btn:hover { background: rgba(248, 113, 113, 0.1); }
         .refresh-btn { background: #334155; color: white; border: none; padding: 12px 24px; border-radius: 12px; cursor: pointer; fontWeight: 700; transition: 0.3s; }
         .refresh-btn:hover { background: #475569; }
+
+        .export-btn {
+          background: #10b981;
+          color: white;
+          border: none;
+          padding: 12px 24px;
+          border-radius: 12px;
+          cursor: pointer;
+          font-weight: 700;
+          transition: 0.3s;
+        }
+
+        .export-btn:hover {
+          background: #059669;
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+        }
       `}</style>
 
       <Sidebar />
       <div className="admin-main-content">
         <div className="page-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
           <div>
-            <h1 className="page-title">Candidate Applications</h1>
+            <h1 className="page-title">Applications</h1>
             <p style={{ color: '#64748b', marginTop: '8px' }}>Review and manage resumes submitted by job seekers.</p>
           </div>
-          <button onClick={fetchApplications} className="refresh-btn">Refresh Applications</button>
+          <div style={{ display: 'flex', gap: '15px' }}>
+            <button className="export-btn" onClick={() => handleExport()}>
+              Export Data
+            </button>
+            <button onClick={fetchApplications} className="refresh-btn">Refresh Applications</button>
+          </div>
         </div>
 
         <div className="table-container">
@@ -115,17 +179,15 @@ const Applications = () => {
                 apps.map((a) => (
                   <tr key={a.id}>
                     <td>{new Date(a.created_at).toLocaleDateString()}</td>
-                    <td style={{ fontWeight: 700 }}>{a.name}</td>
+                    <td style={{ fontWeight: 700 }}>{a.first_name} {a.last_name}</td>
                     <td>
                       <div style={{ fontSize: '0.85rem', fontWeight: 600 }}>{a.email}</div>
-                      <div style={{ fontSize: '0.85rem', color: '#64748b' }}>{a.phone}</div>
+                      <div style={{ fontSize: '0.85rem', color: '#64748b' }}>{a.mobile}</div>
                     </td>
                     <td>
-                      <div style={{ fontWeight: 700, color: '#e10600' }}>Portfolio: {a.portfolio_url || 'N/A'}</div>
+                      <div style={{ fontWeight: 700, color: '#e10600' }}>{a.selected_job}</div>
                       <div style={{ fontSize: '0.75rem', color: '#64748b', marginTop: '4px' }}>
-                        {a.cover_letter ? (
-                          <div style={{ fontStyle: 'italic' }}>"{a.cover_letter.substring(0, 50)}..."</div>
-                        ) : 'No cover letter'}
+                        {a.service_type} | {a.source}
                       </div>
                     </td>
                     <td>

@@ -28,6 +28,46 @@ const ServiceInquiries = () => {
     }
   };
 
+  const handleExport = () => {
+    if (inquiries.length === 0) {
+      alert("No data to export");
+      return;
+    }
+
+    const headers = ["Date", "Service", "Name", "Email", "Phone/Website", "Message"];
+    const csvRows = [
+      headers.join(","),
+      ...inquiries.map(inq => {
+        let dateStr = 'N/A';
+        if (inq.created_at) {
+          const d = new Date(inq.created_at);
+          const day = String(d.getDate()).padStart(2, '0');
+          const month = String(d.getMonth() + 1).padStart(2, '0');
+          const year = d.getFullYear();
+          dateStr = `${day}-${month}-${year}`;
+        }
+        return [
+          `"${dateStr}"`,
+          `"${inq.service || ''}"`,
+          `"${inq.name || ''}"`,
+          `"${inq.email || ''}"`,
+          `"${inq.phone || ''}"`,
+          `"${(inq.message || '').replace(/"/g, '""')}"`
+        ].join(",");
+      })
+    ];
+
+    const csvContent = csvRows.join("\n");
+    const blob = new Blob(["\ufeff", csvContent], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.setAttribute("href", url);
+    link.setAttribute("download", `service_inquiries_${new Date().toISOString().split('T')[0]}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   const deleteInquiry = async (id) => {
     if (!window.confirm('Are you sure you want to delete this inquiry?')) return;
     try {
@@ -51,9 +91,14 @@ const ServiceInquiries = () => {
             <h1 className="dashboard-title">Service Inquiries</h1>
             <p className="dashboard-subtitle">Manage inquiries from specialized service pages</p>
           </div>
-          <button className="refresh-btn" onClick={fetchInquiries}>
-            Refresh Data
-          </button>
+          <div style={{ display: 'flex', gap: '15px' }}>
+            <button className="export-btn" onClick={() => handleExport()}>
+              Export Data
+            </button>
+            <button className="refresh-btn" onClick={fetchInquiries}>
+              Refresh Data
+            </button>
+          </div>
         </header>
 
         <div className="admin-card-table">
@@ -147,6 +192,23 @@ const ServiceInquiries = () => {
         .refresh-btn:hover {
           background: #475569;
           transform: translateY(-2px);
+        }
+
+        .export-btn {
+          background: #10b981;
+          color: white;
+          border: none;
+          padding: 12px 24px;
+          border-radius: 12px;
+          font-weight: 700;
+          cursor: pointer;
+          transition: all 0.3s ease;
+        }
+
+        .export-btn:hover {
+          background: #059669;
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
         }
 
         .admin-card-table {

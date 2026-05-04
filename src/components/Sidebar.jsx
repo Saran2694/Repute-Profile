@@ -12,10 +12,11 @@ const Sidebar = () => {
 
   const navItems = [
     { path: '/dashboard', label: 'Dashboard', icon: 'M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6' },
+    { path: '/dashboard/master-cms', label: 'Website CMS', icon: 'M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z' },
+    { type: 'header', label: 'Inquiries' },
     { path: '/dashboard/inquiries', label: 'Inquiries', icon: 'M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z' },
     { path: '/dashboard/service-inquiries', label: 'Service Inquiries', icon: 'M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z' },
-    { path: '/dashboard/applications', label: 'Applications', icon: 'M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z' },
-    { path: '/dashboard/master-cms', label: 'Website CMS', icon: 'M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z' }
+    { path: '/dashboard/applications', label: 'Applications', icon: 'M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z' }
   ];
 
   return (
@@ -149,6 +150,15 @@ const Sidebar = () => {
           color: white;
           transform: translateY(-2px);
         }
+
+        .nav-header {
+          font-size: 0.7rem;
+          text-transform: uppercase;
+          letter-spacing: 1.5px;
+          color: #475569;
+          font-weight: 800;
+          margin: 20px 0 10px 16px;
+        }
       `}</style>
 
       <div className="admin-sidebar">
@@ -158,7 +168,10 @@ const Sidebar = () => {
         </div>
 
         <nav className="admin-nav">
-          {navItems.map((item) => {
+          {navItems.map((item, index) => {
+            if (item.type === 'header') {
+              return <div key={index} className="nav-header">{item.label}</div>;
+            }
             const isActive = location.pathname === item.path;
             return (
               <Link key={item.path} to={item.path} className={`admin-nav-item ${isActive ? 'active' : ''}`}>

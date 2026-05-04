@@ -15,6 +15,7 @@ const Inquiries = () => {
       const { data, error } = await supabase
         .from('contacts')
         .select('*')
+        .neq('subject', 'Service Inquiry')
         .order('created_at', { ascending: false });
 
       if (error) throw error;
@@ -24,6 +25,47 @@ const Inquiries = () => {
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleExport = () => {
+    if (messages.length === 0) {
+      alert("No data to export");
+      return;
+    }
+
+    const headers = ["Date", "Name", "Email", "Phone", "Subject", "Service", "Message"];
+    const csvRows = [
+      headers.join(","),
+      ...messages.map(m => {
+        let dateStr = 'N/A';
+        if (m.created_at) {
+          const d = new Date(m.created_at);
+          const day = String(d.getDate()).padStart(2, '0');
+          const month = String(d.getMonth() + 1).padStart(2, '0');
+          const year = d.getFullYear();
+          dateStr = `${day}-${month}-${year}`;
+        }
+        return [
+          `"${dateStr}"`,
+          `"${m.name || ''}"`,
+          `"${m.email || ''}"`,
+          `"${m.phone || ''}"`,
+          `"${(m.subject || '').replace(/"/g, '""')}"`,
+          `"${(m.service || '').replace(/"/g, '""')}"`,
+          `"${(m.message || '').replace(/"/g, '""')}"`
+        ].join(",");
+      })
+    ];
+
+    const csvContent = csvRows.join("\n");
+    const blob = new Blob(["\ufeff", csvContent], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.setAttribute("href", url);
+    link.setAttribute("download", `client_inquiries_${new Date().toISOString().split('T')[0]}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   const handleDelete = async (id) => {
@@ -66,16 +108,38 @@ const Inquiries = () => {
         .delete-btn:hover { background: rgba(248, 113, 113, 0.1); }
         .refresh-btn { background: #e10600; color: white; border: none; padding: 12px 24px; border-radius: 12px; cursor: pointer; fontWeight: 700; transition: 0.3s; }
         .refresh-btn:hover { background: #c00500; transform: translateY(-2px); }
+
+        .export-btn {
+          background: #10b981;
+          color: white;
+          border: none;
+          padding: 12px 24px;
+          border-radius: 12px;
+          cursor: pointer;
+          font-weight: 700;
+          transition: 0.3s;
+        }
+
+        .export-btn:hover {
+          background: #059669;
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+        }
       `}</style>
 
       <Sidebar />
       <div className="admin-main-content">
         <div className="page-header">
           <div>
-            <h1 className="page-title">Client Inquiries</h1>
+            <h1 className="page-title">Inquiries</h1>
             <p style={{ color: '#94a3b8', marginTop: '8px' }}>Manage messages sent from the Contact page.</p>
           </div>
-          <button onClick={fetchMessages} className="refresh-btn">Refresh Messages</button>
+          <div style={{ display: 'flex', gap: '15px' }}>
+            <button className="export-btn" onClick={() => handleExport()}>
+              Export Data
+            </button>
+            <button onClick={fetchMessages} className="refresh-btn">Refresh Messages</button>
+          </div>
         </div>
 
         <div className="table-container">
